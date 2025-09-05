@@ -26,8 +26,8 @@ app.get("/", (req, res) => {
 const startServer = async () => {
   try {
     await connectDB(process.env.MONGODB_URL); // Make sure MONGODB_URI is correct in .env
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    app.listen(() => {
+      console.log(`🚀 Server running on http://localhost:5000`);
     });
   } catch (err) {
     console.error("Failed to start server:", err);
