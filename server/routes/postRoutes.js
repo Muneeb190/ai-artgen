@@ -44,24 +44,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// PATCH increment views
-router.patch("/:id/view", async (req, res) => {
-  try {
-    const post = await Post.findByIdAndUpdate(
-      req.params.id,
-      { $inc: { views: 1 } },
-      { new: true }
-    );
-    if (!post) {
-      return res.status(404).json({ success: false, message: "Post not found" });
-    }
-    res.status(200).json({ success: true, data: post });
-  } catch (error) {
-    console.error("Error updating views:", error);
-    res.status(500).json({ success: false, message: "Failed to update views" });
-  }
-});
-
 // GET a single post by ID
 router.get("/:id", async (req, res) => {
   try {
